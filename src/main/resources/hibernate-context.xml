@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 12. так как мы Hibernate конфигурируем в Sprigovom приложении, Hibernate как Framework будет представлен через SessionFactory,
+ по сути будет такой entrypoint для нашего приложения, для работы с Hibernate
+для него мы создадим отдельный файлик, где мы будем конфигурировать beans, относящиеся исключительно к Hibernate и БД-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>
+    <!-- 19. Осталось настроить Транзакции, теперь мы работаем, transactionalSupport, что бы было все консистентно,
+          что бы Spring делегировал открытие/закрытие транзакции Hibernate.
+          Добавим Аннотационную поддержку транзакций. Создадим TransactionalManager.
+          Добавив xmlns:tx и tx в schemaLocation-->
+
+    <!-- 13. Первым делом делом добавим DataSource, с проекта JDBC -->
+    <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="dataSource">
+        <!-- минимальный набор property для подключения к БД
+        в середине будет некоторый метод load(), classForName b таким образом подгрузит и зарегистрирует драйвер в DriverManager-->
+        <property name="driverClass" value="${jdbc.driver.class}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/><!--куда мы коннектимся-->
+        <property name="user" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <!--pool - кеш, что бы не создавать заново
+        minPoolSize - минимальное кол - во живых Connectin к БД,
+      императивные настройки, если у вас несколько обращений к БД в час - хватит и одного, с гоолвой,
+      если у вас сотни в секунду - тогда параллелить операции многоядерная система - для одновременного исполнения -->
+        <property name="minPoolSize" value="${jdbc.min.connections}"/>
+        <!--8 ядер и 2000 потоков, нужно будет хендлить переключения-->
+        <property name="maxPoolSize" value="${jdbc.max.connections}"/>
+        <!--Сколько новых Connection будет создаваться, это число есть смысл увеличивать - в высоконагруженных системах, сразу 5 создавать например для 5 новых потоков-->
+        <property name="acquireIncrement" value="${jdbc.acquire.increment}"/>
+    </bean>
+    <!-- 14. Используем   PropertyPlaceholderConfigurer - позволяет использовать ссылки на property внутри нашего application context
+    И сконфигурируем IDEA что бы она подхватывала все наши beans-->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:jdbc.properties"/>
+    </bean>
+
+    <!-- 15. Добавим bean, который представляет нашу sessionFactory, уже в Spring
+     есть набор bean для работы с FrameWork.
+     Позволяет удобно подключить Hibernate имплементацию sessionFactory в наше Spring приложение -
+     по сути это обертка. Spring сам по себе не имплементирует, он делегирует JPA, Hibernate - Hibernate
+      -->
+    <bean id="sessinFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <!-- 16. Определим набор property для bean, передадим ему property-->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 17. Будет искать Entity в указанном пакете, или искать конфигурацию маппинга в соответствующем xml
+        файле -->
+        <property name="packagesToScan" value="ua.goit.java.jdbc.model"/>
+        <!-- 18. передаем диалект Hibernate-->
+        <property name="hibernateProperties">
+            <value>
+                hibernate.dialect=org.hibernate.dialect.PostgreSQL9Dialect
+            </value>
+        </property>
+
+    </bean>
+    <!-- 20. И теперь объявим сам transactional-manager. Это имплементация
+    HibernateTransactionManager - PlatformTransactionManager, которая работает черех Hibernate
+    что бы она могла что то делегировать ей нужно передать объект которому она будет делегировать,
+    в нашем случае это sessionFactoory.
+    sessionFactoory - основной интерфейс Hibernate в приложении.
+    Вот в принципе и сконфигурировали Hibernate-->
+    <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessinFactory"/>
+    </bean>
+
+
+</beans>

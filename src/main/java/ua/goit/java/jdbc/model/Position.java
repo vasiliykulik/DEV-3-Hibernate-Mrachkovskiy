@@ -1,4 +1,4 @@
-package main.java.ua.goit.java.jdbc.model;
+package ua.goit.java.jdbc.model;
 
 /**
  * Created by Raketa on 22.12.2016.

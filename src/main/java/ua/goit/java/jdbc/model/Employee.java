@@ -1,4 +1,4 @@
-package main.java.ua.goit.java.jdbc.model;
+package ua.goit.java.jdbc.model;
 
 import javax.persistence.*;
 import java.security.PrivateKey;
