@@ -34,7 +34,8 @@ public class HEmployeeDao implements EmployeeDao {
     public List<Employee> findAll() {
         return null;
     }
-// 36. Создадим setter
+
+    // 36. Создадим setter
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

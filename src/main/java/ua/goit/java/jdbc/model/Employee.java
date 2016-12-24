@@ -35,6 +35,7 @@ public class Employee {
     private Position position;
     @Column(name = "salary")
     private Float salary;
+
     // 3. создадим sql таблицу
     // 4. Как же нам теперь смапить поля на табличку - есть несколько способов -
     // посмотрим как сделать Аннотациями( можна делять в xml)

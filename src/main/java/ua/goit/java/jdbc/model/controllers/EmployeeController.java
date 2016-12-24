@@ -8,14 +8,12 @@ import ua.goit.java.jdbc.model.Position;
 /**
  * Created by Raketa on 24.12.2016.
  */
-
 public class EmployeeController {
-
     private EmployeeDao employeeDao;
 
     // 30. Добавим поддержку транзакции, что бы Spring сделал
     @Transactional
-    public void createEmployee(){
+    public void createEmployee() {
         // 26. Создадим Employee
         // 27. Что бы Hibernate зарегистрировал его в сессии - его надо передать
         Employee employee = new Employee();
@@ -25,13 +23,11 @@ public class EmployeeController {
         employee.setPosition(Position.WAITER);
         employee.setPhoneNumber("555-55-55");
         employee.setSalary(25000.0F);
-
         // 28. передаем
         employeeDao.save(employee);
     }
 
     // 37. Тоже самое здесь
-
     public void setEmployeeDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
     }

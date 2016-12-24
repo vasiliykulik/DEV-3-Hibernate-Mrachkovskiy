@@ -25,9 +25,8 @@ public class Main {
 // 31.
         employeeController.createEmployee();
     }
+
     // 31. добавим setter
-
-
     public void setEmployeeController(EmployeeController employeeController) {
         this.employeeController = employeeController;
     }

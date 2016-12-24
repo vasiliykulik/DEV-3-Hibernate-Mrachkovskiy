@@ -15,10 +15,7 @@
     </bean>
     <!-- 34. Добавим еще один bean и вот на него нужно будет добавить property-->
     <bean class="ua.goit.java.jdbc.model.hibernate.HEmployeeDao" id="employeeDao">
-
         <!-- 36. Добавим property -->
         <property name="sessionFactory" ref="sessinFactory"/>
-
     </bean>
-
 </beans>
