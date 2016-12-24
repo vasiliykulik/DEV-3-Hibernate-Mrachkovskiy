@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 23. объявим Main бином пока достаточно-->
+    <bean id="main" class="ua.goit.java.jdbc.Main">
+        <!-- 39. тут уже все готово -->
+        <property name="employeeController" ref="employeeController"/>
+    </bean>
+    <!-- 33. Добавим еще один bean -->
+    <bean class="ua.goit.java.jdbc.model.controllers.EmployeeController" id="employeeController">
+        <!-- 38. Тоже самое здесь -->
+        <property name="employeeDao" ref="employeeDao"/>
+    </bean>
+    <!-- 34. Добавим еще один bean и вот на него нужно будет добавить property-->
+    <bean class="ua.goit.java.jdbc.model.hibernate.HEmployeeDao" id="employeeDao">
+
+        <!-- 36. Добавим property -->
+        <property name="sessionFactory" ref="sessinFactory"/>
+
+    </bean>
+
+</beans>
