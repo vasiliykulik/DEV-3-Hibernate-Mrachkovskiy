@@ -12,5 +12,8 @@ public interface DishDao {
 
     void save (Dish dish);
 
+    // 102. То же самое сдесь
+    Dish findByName(String name);
+
     List<Dish> findAll();
 }

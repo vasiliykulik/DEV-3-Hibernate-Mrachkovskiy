@@ -38,12 +38,16 @@ public class EmployeeController {
             employeeDao.save(employee);
         }
         // 55. вернем в любом случае
-        return employee;
     }
     // 78.
     @Transactional
     public List<Employee> getAllEmployees(){
         return employeeDao.findAll();
+    }
+    // 102.
+    @Transactional
+    public Employee getEmployeeByName(String name){
+        return employeeDao.findByName(name);
     }
     public void setEmployeeDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;

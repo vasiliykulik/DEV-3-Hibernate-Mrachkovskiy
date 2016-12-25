@@ -21,6 +21,30 @@ public class Dish {
     @Column(name = "weight")
     private float weight;
 
+    // 93. Equals и hashCode без id
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Dish)) return false;
+
+        Dish dish = (Dish) o;
+
+        if (Float.compare(dish.price, price) != 0) return false;
+        if (Float.compare(dish.weight, weight) != 0) return false;
+        if (name != null ? !name.equals(dish.name) : dish.name != null) return false;
+        return category == dish.category;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (category != null ? category.hashCode() : 0);
+        result = 31 * result + (price != +0.0f ? Float.floatToIntBits(price) : 0);
+        result = 31 * result + (weight != +0.0f ? Float.floatToIntBits(weight) : 0);
+        return result;
+    }
+
     @Override
     public String toString() {
         return "Dish{" +

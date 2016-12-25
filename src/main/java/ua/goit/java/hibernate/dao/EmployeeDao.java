@@ -15,6 +15,9 @@ public interface EmployeeDao {
 
     List<Employee> findAll();
 
+    //98.
+    Employee findByName(String name);
+
     // 51. добавим меотд который будет удалять
     void remove(Employee employee);
 }

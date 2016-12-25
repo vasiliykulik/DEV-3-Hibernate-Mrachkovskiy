@@ -2,6 +2,7 @@ package ua.goit.java.hibernate.dao.hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.transaction.annotation.Transactional;
 import ua.goit.java.hibernate.model.Employee;
 import ua.goit.java.hibernate.dao.EmployeeDao;
@@ -32,6 +33,16 @@ public class HEmployeeDao implements EmployeeDao {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("select e from Employee e").list(); // 56. select * from Employee, будет raw casting
         return null;
+    }
+// 99. Имплементируем метод findByName, ссесия, query
+
+    @Override
+    public Employee findByName(String name) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select e from Employee e where e.name like :name");
+        query.setParameter("name",name);// 100. должно совпадать с именем параметра в query
+        return (Employee) query.uniqueResult(); // 101. uniqueResult - возвращает один результат, и кастим к Employee
+
     }
 
 

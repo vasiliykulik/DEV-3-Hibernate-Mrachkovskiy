@@ -1,5 +1,6 @@
 package ua.goit.java.hibernate.controllers;
 
+import org.springframework.transaction.annotation.Transactional;
 import ua.goit.java.hibernate.dao.DishDao;
 import ua.goit.java.hibernate.model.Dish;
 import ua.goit.java.hibernate.model.DishCategory;
@@ -16,6 +17,8 @@ public class DishController {
     private DishDao dishDao;
 
     // 75. Зададим соответствующие контроллеры
+    // 90. Нет транзакции
+    @Transactional
     public void createDish() {
         Dish plov = new Dish();
         plov.setName("Plov");
@@ -49,9 +52,18 @@ public class DishController {
     }
 
     // 82.
+    // 90. Нет транзакции
+    @Transactional
     public List<Dish> getAllDishes(){
         return dishDao.findAll();
     }
+
+    // 106. Давайте сделаем то же самое для Dish - протестируем
+    @Transactional
+    public Dish getDishByName(String name){
+        return dishDao.findByName(name);
+    }
+
 
     // 76.
     public void setDishDao(DishDao dishDao) {

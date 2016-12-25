@@ -2,17 +2,19 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="main" class="ua.goit.java.hibernate.Main">
-        <property name="employeeController" ref="employeeController"/>
-    </bean>
-    <bean class="ua.goit.java.hibernate.controllers.EmployeeController" id="employeeController">
-        <property name="employeeDao" ref="employeeDao"/>
-    </bean>
-    <bean class="ua.goit.java.hibernate.dao.hibernate.HEmployeeDao" id="employeeDao">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+default-autowire="byName">
+<!--доконфигурируем application context, надоело писать все эти property-->
 
-        <property name="sessionFactory" ref="sessinFactory"/>
+    <bean id="main" class="ua.goit.java.hibernate.Main"/>
 
-    </bean>
+    <bean id="employeeController"  class="ua.goit.java.hibernate.controllers.EmployeeController" />
+    <bean id="dishController" class="ua.goit.java.hibernate.controllers.DishController"/>
+    <!-- 114 . У нас появился новый Контроллер - нужно добавить-->
+    <bean id="orderController" class="ua.goit.java.hibernate.controllers.OrderController"/>
+    <!--нужно добавить-->
+    <bean  id="employeeDao" class="ua.goit.java.hibernate.dao.hibernate.HEmployeeDao"/>
+    <bean id="dishDao" class="ua.goit.java.hibernate.dao.hibernate.HDishDao"/>
+<bean id="orderDao" class="ua.goit.java.hibernate.dao.hibernate.HOrderDao"/>
 
 </beans>

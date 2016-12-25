@@ -1,6 +1,8 @@
 package ua.goit.java.hibernate.dao.hibernate;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import ua.goit.java.hibernate.dao.DishDao;
 import ua.goit.java.hibernate.model.Dish;
 
@@ -23,6 +25,18 @@ public class HDishDao implements DishDao {
     public List<Dish> findAll() {
         return sessionFactory.getCurrentSession().createQuery("select d from Dish d").list();
     }
+
+    // 104. То же самое здесь
+
+    @Override
+    public Dish findByName(String name) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select d from Dish в where d.name like :name");
+        // 108. Самое главное хабыл - нужно было засетить параметр
+        query.setParameter("name", name);
+        return (Dish) query.uniqueResult();
+    }
+
 
     // 73. setter понадобиться
 
