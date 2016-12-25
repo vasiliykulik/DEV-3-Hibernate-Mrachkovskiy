@@ -1,11 +1,12 @@
-package ua.goit.java.jdbc.model.controllers;
+package ua.goit.java.hibernate.controllers;
 
 import org.springframework.transaction.annotation.Transactional;
-import ua.goit.java.jdbc.model.Employee;
-import ua.goit.java.jdbc.model.EmployeeDao;
-import ua.goit.java.jdbc.model.Position;
+import ua.goit.java.hibernate.model.Employee;
+import ua.goit.java.hibernate.dao.EmployeeDao;
+import ua.goit.java.hibernate.model.Position;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -18,7 +19,8 @@ public class EmployeeController {
 
     @Transactional
     // 56. вынужден заменить void на Employee
-    public Employee createEmployee() {
+    // 80. а здесь мы его сделаем void - дабы не было непоняток с id? когда мы выводим их на печать
+    public void createEmployee() {
 
         // 54. Сделаем
         Set<Employee> allEmployees = new HashSet<>(employeeDao.findAll());
@@ -38,9 +40,13 @@ public class EmployeeController {
         // 55. вернем в любом случае
         return employee;
     }
-
-
+    // 78.
+    @Transactional
+    public List<Employee> getAllEmployees(){
+        return employeeDao.findAll();
+    }
     public void setEmployeeDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
+
     }
 }

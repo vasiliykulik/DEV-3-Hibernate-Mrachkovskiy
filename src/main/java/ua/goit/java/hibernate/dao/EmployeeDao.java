@@ -1,4 +1,6 @@
-package ua.goit.java.jdbc.model;
+package ua.goit.java.hibernate.dao;
+
+import ua.goit.java.hibernate.model.Employee;
 
 import java.util.List;
 

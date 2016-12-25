@@ -3,13 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="main" class="ua.goit.java.jdbc.Main">
+    <bean id="main" class="ua.goit.java.hibernate.Main">
         <property name="employeeController" ref="employeeController"/>
     </bean>
-    <bean class="ua.goit.java.jdbc.model.controllers.EmployeeController" id="employeeController">
+    <bean class="ua.goit.java.hibernate.controllers.EmployeeController" id="employeeController">
         <property name="employeeDao" ref="employeeDao"/>
     </bean>
-    <bean class="ua.goit.java.jdbc.model.hibernate.HEmployeeDao" id="employeeDao">
+    <bean class="ua.goit.java.hibernate.dao.hibernate.HEmployeeDao" id="employeeDao">
 
         <property name="sessionFactory" ref="sessinFactory"/>
 

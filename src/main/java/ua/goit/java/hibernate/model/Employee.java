@@ -1,9 +1,8 @@
-package ua.goit.java.jdbc.model;
+package ua.goit.java.hibernate.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.security.PrivateKey;
 
 /**
  * Created by Raketa on 22.12.2016.

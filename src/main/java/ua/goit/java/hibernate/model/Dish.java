@@ -1,4 +1,4 @@
-package ua.goit.java.jdbc.model;
+package ua.goit.java.hibernate.model;
 
 import javax.persistence.*;
 
@@ -16,9 +16,9 @@ public class Dish {
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
     private DishCategory category;
-    @Column(name = "")
+    @Column(name = "price")
     private float price;
-    @Column(name = "")
+    @Column(name = "weight")
     private float weight;
 
     @Override

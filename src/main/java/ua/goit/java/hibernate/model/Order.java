@@ -1,4 +1,4 @@
-package ua.goit.java.jdbc.model;
+package ua.goit.java.hibernate.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -37,10 +37,50 @@ public class Order {
     )
     private List<Dish> dishes;
 
+
     @Column(name  ="table_number")
     private int tableNumber;
 
     @Column(name = "order_date")
     private Date orderDate;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Employee getWaiter() {
+        return waiter;
+    }
+
+    public void setWaiter(Employee waiter) {
+        this.waiter = waiter;
+    }
+
+    public List<Dish> getDishes() {
+        return dishes;
+    }
+
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
+    }
+
+    public int getTableNumber() {
+        return tableNumber;
+    }
+
+    public void setTableNumber(int tableNumber) {
+        this.tableNumber = tableNumber;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
 }

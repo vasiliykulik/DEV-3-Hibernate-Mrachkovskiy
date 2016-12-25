@@ -34,7 +34,7 @@
 
         <property name="dataSource" ref="dataSource"/>
 
-        <property name="packagesToScan" value="ua.goit.java.jdbc.model"/>
+        <property name="packagesToScan" value="ua.goit.java.hibernate.model"/>
 
         <property name="hibernateProperties">
             <value>

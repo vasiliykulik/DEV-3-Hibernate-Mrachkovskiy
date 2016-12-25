@@ -1,10 +1,10 @@
-package ua.goit.java.jdbc.model.hibernate;
+package ua.goit.java.hibernate.dao.hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
-import ua.goit.java.jdbc.model.Employee;
-import ua.goit.java.jdbc.model.EmployeeDao;
+import ua.goit.java.hibernate.model.Employee;
+import ua.goit.java.hibernate.dao.EmployeeDao;
 
 import java.util.List;
 
