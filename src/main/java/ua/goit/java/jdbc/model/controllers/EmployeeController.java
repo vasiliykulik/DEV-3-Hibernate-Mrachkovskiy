@@ -13,24 +13,19 @@ public class EmployeeController {
 
     private EmployeeDao employeeDao;
 
-    // 30. Добавим поддержку транзакции, что бы Spring сделал
     @Transactional
-    public void createEmployee(){
-        // 26. Создадим Employee
-        // 27. Что бы Hibernate зарегистрировал его в сессии - его надо передать
+    public void createEmployee() {
         Employee employee = new Employee();
-        employee.setId(1L);
+        employee.setId(2L);
         employee.setName("John");
         employee.setSurname("Smith");
         employee.setPosition(Position.WAITER);
         employee.setPhoneNumber("555-55-55");
         employee.setSalary(25000.0F);
 
-        // 28. передаем
         employeeDao.save(employee);
     }
 
-    // 37. Тоже самое здесь
 
     public void setEmployeeDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
