@@ -30,6 +30,32 @@ public class Employee {
     @Column(name = "salary")
     private Float salary;
 
+    // 53. для нашего Employee мы имплементируем equals метод без id (синтетический индентификатор)
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee)) return false;
+
+        Employee employee = (Employee) o;
+
+        if (name != null ? !name.equals(employee.name) : employee.name != null) return false;
+        if (surname != null ? !surname.equals(employee.surname) : employee.surname != null) return false;
+        if (phoneNumber != null ? !phoneNumber.equals(employee.phoneNumber) : employee.phoneNumber != null)
+            return false;
+        if (position != employee.position) return false;
+        return salary != null ? salary.equals(employee.salary) : employee.salary == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
+        result = 31 * result + (position != null ? position.hashCode() : 0);
+        result = 31 * result + (salary != null ? salary.hashCode() : 0);
+        return result;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +

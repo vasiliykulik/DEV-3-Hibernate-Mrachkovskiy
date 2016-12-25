@@ -12,4 +12,7 @@ public interface EmployeeDao {
     Employee load(Long id);
 
     List<Employee> findAll();
+
+    // 51. добавим меотд который будет удалять
+    void remove(Employee employee);
 }
