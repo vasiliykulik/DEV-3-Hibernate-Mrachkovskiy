@@ -27,7 +27,8 @@ public class Order {
     private Employee waiter;
 
 
-    // 63. КОНФИгурируем таблицу
+    // 63. КОНФИгурируем таблицу Смапить Entity на таблицы
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "dish_to_order",
