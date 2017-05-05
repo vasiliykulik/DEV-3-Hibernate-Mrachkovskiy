@@ -37,7 +37,7 @@ public class Main {
     dishes.add("Potato");
     dishes.add("Salad");
     orderController.createOrder("John", dishes, 2);
-    orderController.getAllOrders().forEach(System.out::println);
+
     orderController.printAllOrders();
   }
 

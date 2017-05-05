@@ -33,6 +33,12 @@ public class OrderController {
         return orderDao.findAllOrders();
     }
     @Transactional
+    public void printAllOrders() {
+        getAllOrders().forEach(System.out::println);
+    }
+
+
+    @Transactional
     private List<Dish> createDishes(List<String> dishes) {
         List<Dish> result = new ArrayList<>();
         for (String dishName : dishes) {
