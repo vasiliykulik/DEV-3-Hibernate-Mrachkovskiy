@@ -25,6 +25,9 @@ public class Main {
 
         employeeController.getAllEmployees().forEach(System.out::println);
         dishController.getAllDishes().forEach(System.out::println);
+
+
+        System.out.println(employeeController.getEmployeesByName("John"));
     }
 
     public void setEmployeeController(EmployeeController employeeController) {
