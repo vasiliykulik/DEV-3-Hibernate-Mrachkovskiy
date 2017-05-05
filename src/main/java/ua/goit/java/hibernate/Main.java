@@ -1,8 +1,8 @@
-package ua.goit.java.jdbc;
+package ua.goit.java.hibernate;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ua.goit.java.jdbc.model.controllers.EmployeeController;
+import ua.goit.java.hibernate.controllers.EmployeeController;
 
 /**
  * Created by Raketa on 22.12.2016.

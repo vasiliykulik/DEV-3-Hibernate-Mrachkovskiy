@@ -1,4 +1,4 @@
-package ua.goit.java.jdbc.model;
+package ua.goit.java.hibernate.model;
 
 /**
  * Created by Raketa on 22.12.2016.

@@ -50,7 +50,7 @@
         <property name="dataSource" ref="dataSource"/>
         <!-- 17. Будет искать Entity в указанном пакете, или искать конфигурацию маппинга в соответствующем xml
         файле -->
-        <property name="packagesToScan" value="ua.goit.java.jdbc.model"/>
+        <property name="packagesToScan" value="ua.goit.java.hibernate.model"/>
         <!-- 18. передаем диалект Hibernate-->
         <property name="hibernateProperties">
             <value>
