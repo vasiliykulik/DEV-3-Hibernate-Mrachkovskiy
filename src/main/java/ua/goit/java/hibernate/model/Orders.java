@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Orders {
     // 61. более сложный
 
     @Id
@@ -32,8 +32,8 @@ public class Order {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "dish_to_order",
-            joinColumns = @JoinColumn(name = "dish_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id")
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "dish_id")
     )
     private List<Dish> dishes;
 
@@ -86,7 +86,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
+        return "Orders{" +
                 "id=" + id +
                 ", waiter=" + waiter +
                 ", dishes=" + dishes +

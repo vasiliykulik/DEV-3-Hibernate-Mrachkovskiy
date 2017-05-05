@@ -44,6 +44,8 @@ public class Employee {
     // 11. Вот в принципе и весь mapping, это mapping row type (по сути примитивов, простых объектов (embedded - String)
     // те которые грубоговоря находятся в отношении КОМПОЗИЦИИ с нашим объектов)
 // 27. set get toString
+
+
     @Override
     public String toString() {
         return "Employee{" +

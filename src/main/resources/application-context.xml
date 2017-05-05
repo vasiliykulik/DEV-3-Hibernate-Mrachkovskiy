@@ -9,10 +9,10 @@
 
     <bean id="employeeController" class="ua.goit.java.hibernate.controllers.EmployeeController"/>
     <bean id="dishController" class="ua.goit.java.hibernate.controllers.DishController"/>
-
+    <bean id="orderController" class="ua.goit.java.hibernate.controllers.OrderController"/>
 
     <bean id="employeeDao" class="ua.goit.java.hibernate.dao.hibernate.HEmployeeDao"/>
     <bean id="dishDao" class="ua.goit.java.hibernate.dao.hibernate.HDishDao"/>
-
+    <bean id="orderDao" class="ua.goit.java.hibernate.dao.hibernate.HOrderDao"/>
 
 </beans>

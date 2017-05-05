@@ -36,6 +36,7 @@ public class EmployeeController {
     public List<Employee> getAllEmployees(){
         return employeeDao.findAll();
     }
+
     @Transactional
     public Employee getEmployeesByName(String name){
         return employeeDao.findByName(name);

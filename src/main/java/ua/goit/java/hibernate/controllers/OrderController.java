@@ -1,4 +1,3 @@
-/*
 package ua.goit.java.hibernate.controllers;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -12,34 +11,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-*/
-/**
- * Created by Raketa on 25.12.2016.
- *//*
-
 public class OrderController {
-    // 95. Свяжем всех этих товарищей между собой,
 
     private EmployeeDao employeeDao;
     private DishDao dishDao;
     private OrderDao orderDao;
 
-    // 113. Сразу объявим
     @Transactional
     public void createOrder(String waiterName, List<String> dishes, int tableNumber) {
-
-
-        // 96. похожие запросы могут приходить с application, но в более User Friendly
-        // 97. Нам нужно находить объекты по каким то другим полям, и это будет делаться через EmployeeDao
-        // 110. Можем приступить к созданию Orders
         Orders orders = new Orders();
         orders.setWaiter(employeeDao.findByName(waiterName));
         orders.setDishes(createDishes(dishes));
-        // 112. далее
         orders.setTableNumber(tableNumber);
         orders.setOrderDate(new Date());
-// 120. Set <Orders> создавать не будем
-        // 130. Забыли заперсистить
         orderDao.save(orders);
     }
 
@@ -48,14 +32,7 @@ public class OrderController {
     public List<Orders> getAllOrders() {
         return orderDao.findAllOrders();
     }
-// 140. недописали
- */
-/*   @Transactional
-    public void printAllOrders(){
-        getAllOrders().forEach(Sys);
-    }*//*
-
-
+    @Transactional
     private List<Dish> createDishes(List<String> dishes) {
         List<Dish> result = new ArrayList<>();
         for (String dishName : dishes) {
@@ -63,7 +40,6 @@ public class OrderController {
         }
         return result;
     }
-    // 111. надо добавить setters
 
     public void setEmployeeDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
@@ -77,4 +53,3 @@ public class OrderController {
         this.orderDao = orderDao;
     }
 }
-*/
