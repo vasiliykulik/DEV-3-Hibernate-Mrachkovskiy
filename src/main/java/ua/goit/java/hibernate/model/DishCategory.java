@@ -6,5 +6,5 @@ package ua.goit.java.hibernate.model;
 public enum DishCategory {
     MAIN,
     SALAD,
-    SIDE_DISH
+  DESSERT, SIDE_DISH
 }

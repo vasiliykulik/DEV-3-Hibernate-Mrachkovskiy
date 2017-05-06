@@ -5,6 +5,7 @@ import ua.goit.java.hibernate.dao.DishDao;
 import ua.goit.java.hibernate.dao.EmployeeDao;
 import ua.goit.java.hibernate.dao.OrderDao;
 import ua.goit.java.hibernate.model.Dish;
+import ua.goit.java.hibernate.model.DishCategory;
 import ua.goit.java.hibernate.model.Order;
 
 
@@ -20,7 +21,25 @@ public class OrderController {
 
   @Transactional
   public void initOrders() {
-    String waiterName = "John";
+    List<String> dishes1 = new ArrayList<>();
+    dishes1.add("Plov");
+    dishes1.add("Salad");
+
+    createOrder("John", dishes1, 1);
+
+    List<String> dishes2 = new ArrayList<>();
+    dishes2.add("Potato");
+    dishes2.add("Salad");
+
+    createOrder("John", dishes2, 2);
+    List<String> dishes3 = new ArrayList<>();
+    dishes3.add("Plov");
+    dishes3.add("Potato");
+
+    createOrder("Mary", dishes3, 3);
+
+    orderDao.save(createOderWithIceCream());
+/*    String waiterName = "John";
     List<String> dishes = new ArrayList<>();
     dishes.add("Plov");
     dishes.add("Salad");
@@ -30,6 +49,35 @@ public class OrderController {
     order.setDishes(createDishes(dishes));
     order.setTableNumber(tableNumber);
     order.setOrderDate(new Date());
+    orderDao.save(order);*/
+  }
+
+  private Order createOderWithIceCream() {
+    List<Dish> dishes4 = new ArrayList<>();
+
+    Dish iceCream = new Dish();
+    iceCream.setName("Ice Cream");
+    iceCream.setCategory(DishCategory.DESSERT);
+    iceCream.setPrice(3.0F);
+    iceCream.setWeight(100.0F);
+    dishes4.add(iceCream);
+
+    Order order = new Order();
+    order.setWaiter(employeeDao.findByName("Mary"));
+    order.setDishes(dishes4);
+    order.setTableNumber(4);
+    order.setOrderDate(new Date());
+    return order;
+  }
+
+  @Transactional
+  public void createOrder(String waiterName, List<String> dishes, int tableNumber) {
+    Order order = new Order();
+    order.setWaiter(employeeDao.findByName(waiterName));
+    order.setDishes(createDishes(dishes));
+    order.setTableNumber(tableNumber);
+    order.setOrderDate(new Date());
+
     orderDao.save(order);
   }
 
