@@ -73,6 +73,11 @@ public class EmployeeController {
     employeeDao.removeAll();
   }
 
+  @Transactional
+  public void printAllEmpoyees(){
+    employeeDao.findAll().forEach(System.out::println);
+  }
+
   public void setEmployeeDao(EmployeeDao employeeDao) {
     this.employeeDao = employeeDao;
   }

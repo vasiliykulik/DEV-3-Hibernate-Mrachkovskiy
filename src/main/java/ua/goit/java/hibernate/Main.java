@@ -6,9 +6,6 @@ import ua.goit.java.hibernate.controllers.DishController;
 import ua.goit.java.hibernate.controllers.EmployeeController;
 import ua.goit.java.hibernate.controllers.OrderController;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Raketa on 22.12.2016.
  */
@@ -37,7 +34,7 @@ public class Main {
   }
 
   public void start() {
-    orderController.printAllOrders();
+    employeeController.printAllEmpoyees();
   }
 
   public void setEmployeeController(EmployeeController employeeController) {
