@@ -34,6 +34,7 @@ public class Main {
   }
 
   public void start() {
+    employeeController.getAllEmployees().forEach(System.out::println);
     employeeController.printAllEmpoyees();
   }
 
