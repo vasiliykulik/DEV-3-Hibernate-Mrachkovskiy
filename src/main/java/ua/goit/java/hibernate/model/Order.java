@@ -29,7 +29,7 @@ public class Order {
 
     // 63. КОНФИгурируем таблицу Смапить Entity на таблицы
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "dish_to_order",
             joinColumns = @JoinColumn(name = "order_id"),

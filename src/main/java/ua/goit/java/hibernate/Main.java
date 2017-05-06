@@ -36,7 +36,7 @@ public class Main {
   public void start() {
     /*employeeController.getAllEmployees().forEach(System.out::println);
     employeeController.printAllEmpoyees();*/
-    employeeController.printEmployee(1L);
+    employeeController.printEmployee(2L);
   }
 
   public void setEmployeeController(EmployeeController employeeController) {

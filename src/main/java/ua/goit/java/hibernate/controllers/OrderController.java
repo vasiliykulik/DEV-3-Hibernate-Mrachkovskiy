@@ -53,18 +53,20 @@ public class OrderController {
   }
 
   private Order createOderWithIceCream() {
-    List<Dish> dishes4 = new ArrayList<>();
+    List<Dish> dishes = new ArrayList<>();
 
     Dish iceCream = new Dish();
     iceCream.setName("Ice Cream");
     iceCream.setCategory(DishCategory.DESSERT);
     iceCream.setPrice(3.0F);
     iceCream.setWeight(100.0F);
-    dishes4.add(iceCream);
+
+    dishDao.save(iceCream);
+    dishes.add(iceCream);
 
     Order order = new Order();
     order.setWaiter(employeeDao.findByName("Mary"));
-    order.setDishes(dishes4);
+    order.setDishes(dishes);
     order.setTableNumber(4);
     order.setOrderDate(new Date());
     return order;
