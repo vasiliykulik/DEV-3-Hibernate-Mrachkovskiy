@@ -26,7 +26,7 @@ public class HEmployeeDao implements EmployeeDao {
 
   @Override
   public Employee load(Long id) {
-    return null;
+    return sessionFactory.getCurrentSession().load(Employee.class, id);
   }
 
   @Override
