@@ -4,7 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-autowire="byName">
 
-    <bean id="main" class="ua.goit.java.hibernate.Main"/>
+    <bean id="main" class="ua.goit.java.hibernate.Main" init-method="init">
+        <property name="reInit" value="true"/>
+    </bean>
 
 
     <bean id="employeeController" class="ua.goit.java.hibernate.controllers.EmployeeController"/>

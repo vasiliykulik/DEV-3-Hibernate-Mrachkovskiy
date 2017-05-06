@@ -44,6 +44,11 @@ public class HEmployeeDao implements EmployeeDao {
   }
 
   @Override
+  public void removeAll() {
+    sessionFactory.getCurrentSession().createQuery("delete from Employee ").executeUpdate();
+  }
+
+  @Override
   public void remove(Employee employee) {
     sessionFactory.getCurrentSession().delete(employee);
   }

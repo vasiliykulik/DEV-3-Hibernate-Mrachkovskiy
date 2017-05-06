@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "orders")
-public class Orders {
+public class Order {
     // 61. более сложный
 
     @Id
@@ -86,9 +86,8 @@ public class Orders {
 
     @Override
     public String toString() {
-        return "Orders{" +
+        return "Order{" +
                 "id=" + id +
-                ", waiter=" + waiter +
                 ", dishes=" + dishes +
                 ", tableNumber=" + tableNumber +
                 ", orderDate=" + orderDate +

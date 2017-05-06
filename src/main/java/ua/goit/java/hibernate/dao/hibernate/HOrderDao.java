@@ -2,7 +2,7 @@ package ua.goit.java.hibernate.dao.hibernate;
 
 import org.hibernate.SessionFactory;
 import ua.goit.java.hibernate.dao.OrderDao;
-import ua.goit.java.hibernate.model.Orders;
+import ua.goit.java.hibernate.model.Order;
 
 import java.util.List;
 
@@ -14,14 +14,19 @@ public class HOrderDao implements OrderDao {
   private SessionFactory sessionFactory;
 
   @Override
-  public void save(Orders orders) {
-    sessionFactory.getCurrentSession().save(orders);
+  public void save(Order order) {
+    sessionFactory.getCurrentSession().save(order);
   }
 
   @Override
-  public List<Orders> findAllOrders() {
+  public List<Order> findAllOrders() {
     return sessionFactory.getCurrentSession().
-            createQuery("select o from Orders o").list();
+            createQuery("select o from Order o").list();
+  }
+
+  @Override
+  public void removeAll() {
+    sessionFactory.getCurrentSession().createQuery("delete from Order").executeUpdate();
   }
 
   public void setSessionFactory(SessionFactory sessionFactory) {

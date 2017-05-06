@@ -17,27 +17,26 @@ public class Main {
   private EmployeeController employeeController;
   private OrderController orderController;
 
+  private boolean reInit;
+
   public static void main(String[] args) {
     ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml", "hibernate-context.xml");
     context.getBean(Main.class).start();
   }
 
-  private void start() {
-    employeeController.createEmployee();
-    dishController.createDish();
-/*    employeeController.getAllEmployees().forEach(System.out::println);
-    dishController.getAllDishes().forEach(System.out::println);
-    System.out.println(employeeController.getEmployeesByName("John"));
-    System.out.println(dishController.getDishByName("Plov"));*/
-    List<String> dishes1 = new ArrayList<>();
-    dishes1.add("Plov");
-    dishes1.add("Salad");
-    orderController.createOrder("John", dishes1, 1);
-    List<String> dishes = new ArrayList<>();
-    dishes.add("Potato");
-    dishes.add("Salad");
-    orderController.createOrder("John", dishes, 2);
+  public void init() {
+    if (reInit) {
+      orderController.removeAllOrders();
+      dishController.removeAllDishes();
+      employeeController.removeAllEmployee();
 
+      employeeController.initEmployees();
+      dishController.initDishes();
+      orderController.initOrders();
+    }
+  }
+
+  public void start() {
     orderController.printAllOrders();
   }
 
@@ -51,6 +50,10 @@ public class Main {
 
   public void setOrderController(OrderController orderController) {
     this.orderController = orderController;
+  }
+
+  public void setReInit(boolean reInit) {
+    this.reInit = reInit;
   }
 }
 

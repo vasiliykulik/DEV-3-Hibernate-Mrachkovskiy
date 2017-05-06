@@ -6,6 +6,7 @@ CREATE TABLE employee
   phone_number CHARACTER VARYING,
   "position"   CHARACTER VARYING,
   salary       REAL,
+  dtype CHARACTER VARYING,
   PRIMARY KEY (id)
 );
 

@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Entity
 // 6. Объясним Hibernate на какую табличку мапится класс (можем не указать Hibernate сам попробует найти)
 @Table(name = "employee")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Employee {
     // 7. Укажем что будет Id (можем не указать Hibernate сам попробует найти - после рефакторинг БД - все может сломаться)
     @Id
