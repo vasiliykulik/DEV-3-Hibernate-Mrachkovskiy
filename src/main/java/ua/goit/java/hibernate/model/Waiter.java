@@ -16,7 +16,7 @@ public class Waiter extends Employee {
 
   @OneToMany(fetch = FetchType.EAGER)
   @JoinColumn(name = "employee_id")
-  @Fetch(FetchMode.JOIN)
+  @Fetch(FetchMode.SELECT)
   private List<Order> orders;
 
   public List<Order> getOrders() {
