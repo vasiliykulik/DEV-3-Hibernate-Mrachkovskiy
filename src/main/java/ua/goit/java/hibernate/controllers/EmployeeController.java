@@ -42,6 +42,7 @@ public class EmployeeController {
   @Transactional
   public void printEmployee(Long id){
     System.out.println(employeeDao.load(id));
+    System.out.println(employeeDao.load(id));
   }
 
   @Transactional
